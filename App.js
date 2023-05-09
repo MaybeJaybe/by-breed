@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, SafeAreaView, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, View, FlatList, SafeAreaView, TextInput, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import Item from './Item';
 import { cats, dogs } from './breeds';
 
@@ -13,10 +13,21 @@ export default function App() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.kav}
       >
+        <Text style={styles.heading}>Breed Dataset</Text>
+        {/* i like search bar better on top */}
+        <View>
+          <TextInput 
+            style={styles.search} 
+            placeholder="Search"
+            onChangeText={setSearch}
+            value={search}
+          />
+        </View>
         {/* <ScrollView> */}
         <StatusBar style="auto" />
         {/* <TextInput style={styles.search} placeholder="Search"/> */}
         <View style={styles.listContainer}>
+          {/* <Text style={styles.heading}>Breed Dataset</Text> */}
           <FlatList 
             data={cats.filter(item => item.breed.includes(search))}
             keyExtractor={item => item.breed}
@@ -30,12 +41,6 @@ export default function App() {
           <Text style={styles.small}>Small Print</Text> */}
           {/* <StatusBar style="auto" /> */}
         </View>
-        <TextInput 
-          style={styles.search} 
-          placeholder="Search"
-          onChangeText={setSearch}
-          value={search}
-        />
         {/* </ScrollView> */}
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -43,29 +48,33 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  kav: {
-    flex: 1,
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 30,
-  },
-  listContainer: {
-    width: '100%'
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    // marginTop: 50,
+  },
+  kav: {
+    flex: 1,
+    // justifyContent: 'center',
+    width: '100%',
+    marginBottom: 40,
+  },
+  listContainer: {
+    width: '100%'
   },
   heading: {
     fontSize: 50,
-    color: 'tomato',
+    color: '#42bff5',
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   search: {
     fontSize: 24,
     padding: 10,
     borderWidth: 1,
+    textAlign: 'center',
+    marginBottom: 10,
   },
 });

@@ -15,7 +15,8 @@ function Item(props) {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.label}>{index} - {breed} {average}</Text>
+			<Text style={styles.label}>{breed} - {average}</Text>
+			{/* <Text style={styles.label}>{index} - {breed} {average}</Text> */}
 			{/* {keys.map(key => <Text style={styles.items}>{key} - {data[key]}</Text>)} */}
 			{keys.map(key => <Feature name={key} value={data[key]} />)}
 		</View>
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
 	container: {
 		padding: 10,
 		margin: 1,
-		backgroundColor: '#ff3Df0',
 	},
 	label: {
 		fontSize: 28,
