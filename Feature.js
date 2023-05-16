@@ -17,9 +17,9 @@ function Feature({ name, value }) {
 
 const styles = StyleSheet.create({
 	container: {
-		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		margin: 10,
 		padding: 8,
 	},
 	name: {

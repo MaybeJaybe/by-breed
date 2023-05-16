@@ -1,39 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Feature from './Feature';
+import { Text, TouchableHighlight } from 'react-native';
 
-function Item(props) {
-	const { data, index } = props
-	const { breed } = data
-	const keys = Object.keys(data).filter(key => key != 'breed')
-
-	const average = (keys.reduce((acc, key) => {
-		return acc + data[key]
-	}, 0) / keys.length).toFixed(1)
-
-	// ⭐ ★ 
-
+function Item({ title, showDetails }) {
 	return (
-		<View style={styles.container}>
-			<Text style={styles.label}>{breed} - {average}</Text>
-			{/* <Text style={styles.label}>{index} - {breed} {average}</Text> */}
-			{/* {keys.map(key => <Text style={styles.items}>{key} - {data[key]}</Text>)} */}
-			{keys.map(key => <Feature name={key} value={data[key]} />)}
-		</View>
+		<TouchableHighlight
+			style={{ padding: 20 }}
+			onPress={() => showDetails()}
+			underlayColor='#ccc'
+		>
+			<Text
+				style={{ fontSize: 20 }}
+			>{title}</Text>
+		</TouchableHighlight>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		padding: 10,
-		margin: 1,
-	},
-	label: {
-		fontSize: 28,
-	},
-	items: {
-		fontSize: 20
-	}
-})
 
 export default Item
